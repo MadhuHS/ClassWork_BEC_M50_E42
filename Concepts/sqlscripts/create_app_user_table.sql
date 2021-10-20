@@ -1,0 +1,9 @@
+CREATE TABLE `userdb`.`appusers` (
+  `uid` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `mob` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`uid`),
+  UNIQUE INDEX `uid_UNIQUE` (`uid` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `mob_UNIQUE` (`mob` ASC) VISIBLE);
