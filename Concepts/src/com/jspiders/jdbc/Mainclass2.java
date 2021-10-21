@@ -88,9 +88,48 @@ class DbDemo {
 
 	}
 
-	public void selectUserByEmail(String email)
+	public void selectUserByEmail(String entEmail) 
 	{
-
+       String selectUser = "select * from userdb.appusers where email = ?";
+       
+       try 
+       {
+    	openConnectionToDb();
+		PreparedStatement pstmt = con.prepareStatement(selectUser);
+		pstmt.setString(1, entEmail);
+		
+		
+		ResultSet rSet  = pstmt.executeQuery();
+		
+		int count = 0;
+		
+		while(rSet.next() == true)
+		{
+			
+			int uid = rSet.getInt("uid");
+			String name = rSet.getString("name");
+			String email = rSet.getString("email");
+			String mob = rSet.getString("mob");
+			
+			System.out.println(uid+" "+name+" "+email+" "+mob);
+	
+			count++;
+		}
+		
+		if(count == 0)
+		{
+			System.out.println("ERROR!!! User with "+entEmail+" DOES NOT EXIST");
+		}
+		
+	   }
+       catch (SQLException e)
+       {
+		e.printStackTrace();
+	   }
+       finally
+       {
+    	   closeConnection();
+       }
 	}
 
 	public void selectAllUsers() 
@@ -102,7 +141,7 @@ class DbDemo {
     	openConnectionToDb();
 		PreparedStatement pstmt = con.prepareStatement(selectAllStmt);
 		
-		ResultSet rSet  = pstmt.executeQuery(selectAllStmt);
+		ResultSet rSet  = pstmt.executeQuery();
 		
 		int count = 0;
 		
@@ -154,10 +193,9 @@ public class Mainclass2
 
 		// d1.insert("user9", "user9@gmail.com", "9876543210");
 		// d1.update("Appuser2","appuser2@gmail.com", "987766543211");
-
-		//d1.deleteByEmail("user9@gmail.com");
-		
-		d1.selectAllUsers();
+		// d1.deleteByEmail("user9@gmail.com");
+		// d1.selectAllUsers();
+		d1.selectUserByEmail("appuser24@gmail.com");
 
 	}
 }
