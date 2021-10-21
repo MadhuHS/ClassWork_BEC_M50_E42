@@ -1,0 +1,40 @@
+
+#1
+Create appusers table in usedb schema
+
+CREATE TABLE `userdb`.`appusers` (
+  `uid` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `mob` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`uid`),
+  UNIQUE INDEX `uid_UNIQUE` (`uid` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `mob_UNIQUE` (`mob` ASC) VISIBLE);
+
+-------------------------------------------------------------------------------------------
+#2
+insert record to appusers table
+
+"insert into userdb.appusers values (?,?,?,?)";
+
+-------------------------------------------------------------------------------------------
+
+#3
+
+delete record from appuser table by email
+
+"delete from userdb.appusers where email = ?"
+-------------------------------------------------------------------------------------------
+
+#4
+select all records from appusers table
+
+select * from userdb.appusers;
+
+
+
+
+
+
+
