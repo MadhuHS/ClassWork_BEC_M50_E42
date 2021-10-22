@@ -29,9 +29,7 @@ public class Mainclass
 			break;
 		default:
 			System.out.println("exit");
-
 		}
-
 	}
 
 	public static void userSignup()
