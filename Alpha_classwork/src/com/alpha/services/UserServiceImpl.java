@@ -7,13 +7,13 @@ public class UserServiceImpl implements UserService
 	@Override
 	public void signup(User usr)
 	{
-		System.out.println("signup() executed");
+		System.out.println("UserServiceImpl-signup() executed");
 	}
 
 	@Override
 	public void login(String email, String password)
 	{
-		System.out.println("login() executed");	
+		System.out.println("UserServiceImpl-login() executed");	
 	}
 
 }

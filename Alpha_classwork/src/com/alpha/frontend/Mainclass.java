@@ -2,8 +2,12 @@ package com.alpha.frontend;
 
 import java.util.Scanner;
 
-public class Mainclass {
+import com.alpha.services.UserServiceImpl;
+
+public class Mainclass
+{
 	static Scanner scn = new Scanner(System.in);
+	static UserServiceImpl usrimpl = new UserServiceImpl();
 
 	public static void menu() {
 		System.out.println("1. Signup");
@@ -33,10 +37,12 @@ public class Mainclass {
 	public static void userSignup()
 	{
 		System.out.println("userSignup() executed");
+		usrimpl.signup(null);
 	}
 
 	public static void userLogin() {
 		System.out.println("userLogin() executed");
+		usrimpl.login("email", "password");
 	}
 
 	public static void main(String[] args) {
