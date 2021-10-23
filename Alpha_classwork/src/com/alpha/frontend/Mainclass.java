@@ -2,6 +2,7 @@ package com.alpha.frontend;
 
 import java.util.Scanner;
 
+import com.alpha.entities.User;
 import com.alpha.services.UserServiceImpl;
 
 public class Mainclass
@@ -35,7 +36,36 @@ public class Mainclass
 	public static void userSignup()
 	{
 		System.out.println("userSignup() executed");
-		usrimpl.signup(null);
+		
+		User usr = new User();//Entity class
+		
+		System.out.println("Enter your name : ");
+		String usrName   = scn.next();
+		
+		System.out.println("Enter your Email ID : ");
+		String usrEmail  = scn.next();
+		
+		System.out.println("Enter your password : ");
+		String usrPassword = scn.next();
+		
+		System.out.println("Enter your mobile no : ");
+		String usrMob = scn.next();
+		
+		System.out.println("Enter your Address : ");
+		String usrAddrss = scn.next();
+		
+		System.out.println("Enter role : ");
+		String usrRole = scn.next();
+		
+		usr.setUid(0);
+		usr.setName(usrName);
+		usr.setEmail(usrEmail);
+		usr.setPassword(usrPassword);
+		usr.setMob(usrMob);
+		usr.setAddress(usrAddrss);
+		usr.setRole(usrRole);
+		
+		usrimpl.signup(usr);
 	}
 
 	public static void userLogin() {

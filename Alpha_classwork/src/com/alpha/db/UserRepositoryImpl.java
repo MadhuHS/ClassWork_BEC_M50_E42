@@ -52,11 +52,22 @@ public class UserRepositoryImpl implements UserRepository
 		try
 		{
 			PreparedStatement pstmt = dbCon.prepareStatement(SQLQuery.insertUser);
+			
+			pstmt.setInt(1, 0);
+			pstmt.setString(2, usr.getName());
+			pstmt.setString(3, usr.getEmail());
+			pstmt.setString(4, usr.getPassword());
+			pstmt.setString(5, usr.getMob());
+			pstmt.setString(6, usr.getAddress());
+			pstmt.setString(7, usr.getRole());
+				
 			pstmt.executeUpdate();
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
+			System.out.println("ERROR!!! User with "+usr.getEmail()+" ALREADY REGISTERED");
+			
+			System.out.println("PLEASE LOGIN");
 		}
 		closeConnection();
 	}
