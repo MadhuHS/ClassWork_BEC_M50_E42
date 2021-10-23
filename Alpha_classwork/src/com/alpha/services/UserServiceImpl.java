@@ -1,15 +1,18 @@
 package com.alpha.services;
 
-import com.alpha.db.UserRepositoryImpl;
+import com.alpha.db.RepositoryManager;
+import com.alpha.db.UserRepository;
 import com.alpha.entities.User;
 
 public class UserServiceImpl implements UserService 
 {
-	UserRepositoryImpl userRepo = new UserRepositoryImpl();
+	UserRepository userRepo;
+	RepositoryManager repoMgr = new RepositoryManager();
 	
 	@Override
 	public void signup(User usr)
 	{
+		userRepo = (UserRepository)repoMgr.getRepository("userrepo");
 		System.out.println("UserServiceImpl-signup() executed");
 		userRepo.insertUser(usr);
 	}
