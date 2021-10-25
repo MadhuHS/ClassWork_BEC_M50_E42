@@ -17,19 +17,7 @@ public class UserServiceImpl implements UserService
 	{
 		userRepo = (UserRepository)repoMgr.getRepository("userrepo");
 		System.out.println("UserServiceImpl-signup() executed");
-		
-		//BL
-		
-		boolean b1 = utils.verifyName(usr.getName());
-		boolean b2 = utils.verifyEmailFormat(usr.getEmail());
-		boolean b3 = utils.verifyPassword(usr.getPassword());
-		
-		String pwd = usr.getPassword();
-		
-		if(b1 == true && b2 == true && b3 == true)
-		{
-			userRepo.insertUser(usr);//Save user data to db
-		}
+		userRepo.insertUser(usr);//Save user data to db
 	}
 
 	@Override
