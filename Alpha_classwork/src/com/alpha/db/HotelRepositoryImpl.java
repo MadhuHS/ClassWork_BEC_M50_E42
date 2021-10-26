@@ -8,7 +8,7 @@ import com.alpha.entities.Hotel;
 
 public class HotelRepositoryImpl extends RepositoryUtils implements HotelRepository {
 
-	Hotel[] hotels = new Hotel[5];
+	Hotel[] hotels = new Hotel[3];
 	
 	@Override
 	public Hotel[] selectAllHotels() 
