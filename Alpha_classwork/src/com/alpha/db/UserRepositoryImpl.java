@@ -3,6 +3,7 @@ package com.alpha.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.alpha.entities.User;
@@ -73,9 +74,48 @@ public class UserRepositoryImpl implements UserRepository
 	}
 
 	@Override
-	public void selectUser(String email, String password)
+	public User selectUser(String email, String password)
 	{
 		System.out.println("selectUser() executed");
+		
+		openConnection();
+		
+		try 
+		{
+			PreparedStatement pstmt =dbCon.prepareStatement(SQLQuery.selectUser);
+			
+			pstmt.setString(1, email);
+			pstmt.setString(2, password);
+			
+			ResultSet res =  pstmt.executeQuery();
+			
+			res.next();
+			
+			String usrName   = res.getString("name");
+			String usrEmail  = res.getString("email");
+			String usrMob    = res.getString("mob");
+			String usrAddrss = res.getString("address");
+			String usrRole   = res.getString("role");
+			
+			User usr = new User();
+			
+			usr.setName(usrName);
+			usr.setEmail(usrEmail);
+			usr.setMob(usrMob);
+			usr.setAddress(usrAddrss);
+			usr.setRole(usrRole);
+			
+			System.out.println("user login done");
+			
+			return usr;// return User Object
+			
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 	@Override

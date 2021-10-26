@@ -11,6 +11,7 @@ public class UserServiceImpl implements UserService
 	RepositoryManager repoMgr = new RepositoryManager();
 	
 	Utilities utils = new Utilities();
+	User usr;
 	
 	@Override
 	public void signup(User usr)
@@ -24,7 +25,15 @@ public class UserServiceImpl implements UserService
 	public void login(String email, String password)
 	{
 		System.out.println("UserServiceImpl-login() executed");	
-		userRepo.selectUser(email, password);
+		
+		userRepo = (UserRepository)repoMgr.getRepository("userrepo");
+		usr = userRepo.selectUser(email, password);
+		
+		System.out.println(usr.getName() + " Welcome to ALPHA HOTELS");
 	}
-
 }
+
+
+
+
+
