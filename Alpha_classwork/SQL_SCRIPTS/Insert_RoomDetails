@@ -1,0 +1,7 @@
+
+
+insert into alphahotels.RoomDetails values(1,'H1R001','001','DELUXE','1234',0);
+s
+insert into alphahotels.RoomDetails values(2'H1R002','002','SEMI-DELUXE','1000',0);
+
+insert into alphahotels.RoomDetails values(3,'H3R002','123','SEMI-DELUXE','1000',1);
