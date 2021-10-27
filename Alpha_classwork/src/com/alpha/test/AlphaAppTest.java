@@ -1,5 +1,7 @@
 package com.alpha.test;
 
+import java.util.List;
+
 import com.alpha.db.HotelRepositoryImpl;
 import com.alpha.entities.Hotel;
 import com.alpha.utils.Utilities;
@@ -9,15 +11,14 @@ public class AlphaAppTest
    public static void testHotelRepsoitory()
    {
 	   HotelRepositoryImpl h1 = new HotelRepositoryImpl();
-	   Hotel[] hotels = h1.selectAllHotels();
 	   
-	   System.out.println("hotels : "+hotels);
+	   List<Hotel> hotels = h1.selectAllHotels();
 	   
-	   System.out.println("no. of hotels : "+hotels.length);
+	   System.out.println("no. of hotels : "+hotels.size());
 	   
-	   for (int i = 0; i < hotels.length; i++) 
+	   for (int index = 0; index < hotels.size(); index++) 
 	   {
-		   System.out.println(hotels[i].getHotelName());
+		   System.out.println(hotels.get(index).getHotelName());
        }
 	   
    }

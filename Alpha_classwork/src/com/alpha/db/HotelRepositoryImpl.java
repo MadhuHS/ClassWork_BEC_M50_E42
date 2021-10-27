@@ -3,15 +3,17 @@ package com.alpha.db;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.alpha.entities.Hotel;
 
 public class HotelRepositoryImpl extends RepositoryUtils implements HotelRepository {
 
-	Hotel[] hotels = new Hotel[3];
+	List<Hotel> hotelsList = new ArrayList<Hotel>();
 	
 	@Override
-	public Hotel[] selectAllHotels() 
+	public List<Hotel> selectAllHotels() 
 	{
 	  openConnection();
 	  try 
@@ -20,7 +22,6 @@ public class HotelRepositoryImpl extends RepositoryUtils implements HotelReposit
 		
 		ResultSet rs = pstmt.executeQuery();
 	
-		int index = 0;
 		while(rs.next())
 		{
 			String hotelCity = rs.getString("city");
@@ -45,9 +46,7 @@ public class HotelRepositoryImpl extends RepositoryUtils implements HotelReposit
 			h1.setHotelRating(hotelRating);
 			h1.setHotelEmail(hotelEmail);
 			
-			hotels[index] = h1;
-			index++;
-			
+			hotelsList.add(h1);
 		}
 	  } 
 	  catch (SQLException e)
@@ -55,11 +54,11 @@ public class HotelRepositoryImpl extends RepositoryUtils implements HotelReposit
 		e.printStackTrace();
 	  }
 	  
-	  return hotels;
+	  return hotelsList;
 	}
 
 	@Override
-	public Hotel[] selectHotelsByCity(String hotelCity) {
+	public List<Hotel> selectHotelsByCity(String hotelCity) {
 		// TODO Auto-generated method stub
        return null;
 	}
