@@ -1,81 +1,83 @@
 package com.jspiders.collections;
 
-import java.util.Vector;
+import java.util.Comparator;
+import java.util.TreeSet;
 
-class Hotel
-{
+class Hotel extends Object implements Comparable<Hotel> {
 	private String hotelName;
-	
-	public Hotel(String hotelName)
-	{
+	private double hotelCost;
+
+	public Hotel(String hotelName, double hotelCost) {
 		this.hotelName = hotelName;
+		this.setHotelCost(hotelCost);
 	}
-	
-	public String getHotelName()
-	{
+
+	public String getHotelName() {
 		return hotelName;
 	}
-	
-	public void setHotelName(String hotelName)
-	{
+
+	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
 	}
-}
 
-public class Mainclass2
-{
-	public static void main(String[] args)
-	{
-       Vector<Hotel> a1 = new Vector<Hotel>();
-       
-       Hotel h1 = new Hotel("hotel1");
-       Hotel h2 = new Hotel("hotel2");
-       Hotel h3 = new Hotel("hotel3");
-       
-       //insert-Object-Reference
-       a1.add(h1);
-       a1.add(h2);
-       
-       //insert-Object-Reference at specified INDEX
-       a1.add(0,h3);
-       
-       for (int i = 0; i < a1.size(); i++)
-       {
-		  System.out.println(a1.get(i).getHotelName());
-	   }
-       
-       System.out.println("");
-       //Read-Print-Object-Value
-       System.out.println(a1.get(0).getHotelName());
-       
-       //Read-Update-Object
-       a1.get(0).setHotelName("NEW-HOTEL");
-          
-       //Read-Print-Object-Value
-       System.out.println(a1.get(0).getHotelName());
-       
-       
-       boolean b1 =a1.contains(h3);
-       System.out.println(b1);
-       
-       //Delete-Object
-       a1.remove(0);
-       
-       b1 =a1.contains(h3);
-       System.out.println(b1);
-      
-       
-       //Read-Print-Object-Value
-       System.out.println(a1.get(0).getHotelName());
+	public double getHotelCost() {
+		return hotelCost;
+	}
+
+	public void setHotelCost(double hotelCost) {
+		this.hotelCost = hotelCost;
+	}
+
+	@Override
+	public String toString() {
+		return "name : " + hotelName + " cost : " + hotelCost;
+	}
+
+	@Override
+	public int compareTo(Hotel htl) {
+		String name1 = htl.getHotelName();
+		String name2 = this.getHotelName();
+
+		int res = name2.compareTo(name1);
+
+		return res;
 	}
 }
 
+public class Mainclass2 {
+	public static void main(String[] args) {
+		TreeSet<Hotel> ts1 = new TreeSet<Hotel>();
 
+		Hotel h1 = new Hotel("AAA", 3000.0);
+		Hotel h2 = new Hotel("DDD", 1000.0);
+		Hotel h3 = new Hotel("CCC", 4000.0);
+		Hotel h4 = new Hotel("BBB", 5000.0);
+		Hotel h5 = new Hotel("EEE", 2000.0);
 
+		ts1.add(h1);// add()--->h1.compareTo
+		ts1.add(h2);// add()--->h1.compareTo
+		ts1.add(h3);// add()--->h1.compareTo
+		ts1.add(h4);// add()--->h1.compareTo
+		ts1.add(h5);// add()--->h1.compareTo
 
+		System.out.println(ts1);
 
+		Comparator<Hotel> comp = (Hotel ht1, Hotel ht2) -> {
+			double cs1 = ht1.getHotelCost();
+			double cs2 = ht2.getHotelCost();
 
+			int diff = (int) (cs1 - cs2);
 
+			return diff;
+		};
 
-
-
+		TreeSet<Hotel> ts2 = new TreeSet<Hotel>(comp);
+		ts2.add(h1);// add()--->h1.compareTo
+		ts2.add(h2);// add()--->h1.compareTo
+		ts2.add(h3);// add()--->h1.compareTo
+		ts2.add(h4);// add()--->h1.compareTo
+		ts2.add(h5);// add()--->h1.compareTo
+		
+		System.out.println(ts2);
+	}
+}
