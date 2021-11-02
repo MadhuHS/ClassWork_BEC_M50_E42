@@ -1,0 +1,43 @@
+# ----create a new SCHEMA or DB----
+   CREATE SCHEMA `UsersDB` ;
+
+
+#--------CREATE TABLE----------
+CREATE TABLE `UsersDB`.`Appusers` (
+  `UID` INT NOT NULL AUTO_INCREMENT,
+   `name` VARCHAR(45) NOT NULL,
+   `email` VARCHAR(45) NOT NULL,
+   `mob` INT NOT NULL,
+  PRIMARY KEY (`UID`),
+  UNIQUE INDEX `UID_UNIQUE` (`UID` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `mob_UNIQUE` (`mob` ASC) VISIBLE);
+
+  
+---------------------------------------------------  
+#Read - Select
+
+#select * from UsersDB.Appusers;
+
+#Create - Insert
+#insert into UsersDB.Appusers values (0,'User2','user2@gmail.com',9876543212);
+
+#Create - Insert MULTIPLE
+#insert into UsersDB.Appusers values (0,'User1','user1@gmail.com',9876543211);
+#insert into UsersDB.Appusers values (0,'User2','user2@gmail.com',9876543212);
+#insert into UsersDB.Appusers values (0,'User3','user3@gmail.com',9876543213);
+#insert into UsersDB.Appusers values (0,'User4','user4@gmail.com',9876543214);
+#insert into UsersDB.Appusers values (0,'User5','user5@gmail.com',9876543215);
+
+#Update
+# update UsersDB.Appusers set
+
+#Delete ALL
+#delete from UsersDB.Appusers;
+
+#Delete ONE
+# delete from UsersDB.Appusers where 
+
+
+
+  
